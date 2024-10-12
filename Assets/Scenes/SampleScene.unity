@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 666094924}
   - component: {fileID: 666094925}
   m_Layer: 0
-  m_Name: PlanetRotator
+  m_Name: Planet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -707,7 +707,7 @@ GameObject:
   - component: {fileID: 726317197}
   - component: {fileID: 726317198}
   m_Layer: 0
-  m_Name: PlanetTransformer
+  m_Name: Planet1Control
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -742,6 +742,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
+  bullet: {fileID: 2033617249612280970, guid: 6a5db8faf86862b41843da33a6d11909, type: 3}
+  projectileSpawn: {fileID: 3645366165583193727, guid: 6a5db8faf86862b41843da33a6d11909, type: 3}
+  shootingSpeed: 1
+  bulletSpeed: 10
 --- !u!1 &739522643
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,7 +824,7 @@ GameObject:
   - component: {fileID: 917732166}
   - component: {fileID: 917732167}
   m_Layer: 0
-  m_Name: PlanetRotator
+  m_Name: Planet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -979,7 +983,7 @@ GameObject:
   - component: {fileID: 997012990}
   - component: {fileID: 997012991}
   m_Layer: 0
-  m_Name: PlanetTransformer (1)
+  m_Name: Planet2Control
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

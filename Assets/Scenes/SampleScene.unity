@@ -742,10 +742,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
-  bullet: {fileID: 2033617249612280970, guid: 6a5db8faf86862b41843da33a6d11909, type: 3}
-  projectileSpawn: {fileID: 3645366165583193727, guid: 6a5db8faf86862b41843da33a6d11909, type: 3}
-  shootingSpeed: 1
+  bulletPrefab: {fileID: 2033617249612280970, guid: 6a5db8faf86862b41843da33a6d11909, type: 3}
   bulletSpeed: 10
+  planet1: {fileID: 666094920}
 --- !u!1 &739522643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,6 +1017,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
+  bulletPrefab: {fileID: 2033617249612280970, guid: 6a5db8faf86862b41843da33a6d11909, type: 3}
+  bulletSpeed: 10
+  planet2: {fileID: 917732161}
 --- !u!1 &1022426285
 GameObject:
   m_ObjectHideFlags: 0

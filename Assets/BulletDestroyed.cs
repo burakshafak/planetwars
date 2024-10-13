@@ -4,24 +4,22 @@ using UnityEngine;
 
 public class BulletDestroyed : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]  private float bulletLifeTime = 10f;
     void Start()
     {
-        
+        //bullets destroyed after a certain amount of time
+        Destroy(gameObject, bulletLifeTime);
     }
 
-    // Update is called once per frame
-    void Update()
+   
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision != null)
+        if (collision != null)
         {
-            Destroy(collision.gameObject);
+            print("Collided with " + collision.gameObject.name);
+            Destroy(gameObject);
         }
     }
+   
 
 }

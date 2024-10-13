@@ -11,11 +11,13 @@ public class PlanetController : MonoBehaviour
 
     public GameObject planet1;
 
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float fireCooldown = 2f;
 
+    private float lastFireTime = 0f;
+
+    public GameObject shootingPoint;
+
+  
     // Update is called once per frame
     void Update()
     {
@@ -27,18 +29,25 @@ public class PlanetController : MonoBehaviour
         //update the position
         transform.position = transform.position + new Vector3(horizontalInput * movementSpeed * Time.deltaTime, verticalInput * movementSpeed * Time.deltaTime, 0);
 
-        float fireInput = Input.GetAxis("Fire1");
-        if(fireInput != 0)
+        if (Input.GetButtonUp("Fire1") && Time.time > lastFireTime + fireCooldown)
         {
             Fire();
+            lastFireTime = Time.time;
         }
-        
+
+    }
+
+    IEnumerator Firee()
+    {
+        var bullet = Instantiate(bulletPrefab, shootingPoint.transform.position, shootingPoint.transform.rotation);
+        bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.transform.up * bulletSpeed;
+        yield return null;
     }
 
     void Fire()
     {
-        print("Inside fire method.");
-        var bullet = Instantiate(bulletPrefab, planet1.transform.position, planet1.transform.rotation);
-        bullet.GetComponent<Rigidbody2D>().velocity = planet1.transform.up * bulletSpeed;
+        
+        var bullet = Instantiate(bulletPrefab, shootingPoint.transform.position, shootingPoint. transform.rotation);
+        bullet.GetComponent<Rigidbody2D>().velocity =  shootingPoint.transform.up * bulletSpeed;
     }
 }

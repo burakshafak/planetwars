@@ -15,16 +15,30 @@ public class PlanetHP : MonoBehaviour
         print("Original scale of the planet:" + originalScale.x);
         startingHealth = originalScale.x * 100;
         currentHealth = startingHealth;
+        print("The name of the game object: " + gameObject.name);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if hit by an asteroid.
-        if (other.CompareTag("Fire"))
+        if(gameObject.name == "Planet1")
         {
-            Destroy(other.gameObject); // Destroy the asteroid.
-            TakeDamage(); // Example damage value.
+            if (other.CompareTag("Fire2"))
+            {
+                Destroy(other.gameObject); // Destroy the asteroid.
+                TakeDamage(); // Example damage value.
+            }
         }
+
+        if (gameObject.name == "Planet2")
+        {
+            if (other.CompareTag("Fire1"))
+            {
+                Destroy(other.gameObject); // Destroy the asteroid.
+                TakeDamage(); // Example damage value.
+            }
+        }
+
+
     }
 
     private void TakeDamage()

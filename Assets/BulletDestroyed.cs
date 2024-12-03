@@ -17,7 +17,23 @@ public class BulletDestroyed : MonoBehaviour
         if (collision != null)
         {
             print("Collided with " + collision.gameObject.name);
-            Destroy(gameObject);
+
+            if (gameObject.tag == "Fire1")
+            {
+                if(collision.gameObject.name == "Planet2")
+                {
+                    Destroy(gameObject);
+                }
+            }
+            else if(gameObject.tag == "Fire2")
+            {
+                if (collision.gameObject.name == "Planet1")
+                {
+                    Destroy(gameObject);
+                }
+            }
+            
+            
         }
     }
    

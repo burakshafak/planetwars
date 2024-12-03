@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlanetRotate : MonoBehaviour
 {
-    [SerializeField] private float rotationSpeed = 0.5f;
+    [SerializeField] private float rotationSpeed = 3.0f;
     void Start()
     {
         
@@ -13,6 +13,6 @@ public class PlanetRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, 0, rotationSpeed);
+        transform.Rotate(0, 0, rotationSpeed*Time.deltaTime);
     }
 }

@@ -17,7 +17,7 @@ public class PlanetController : MonoBehaviour
 
     public GameObject shootingPoint;
 
-  
+
     // Update is called once per frame
     void Update()
     {
@@ -46,8 +46,11 @@ public class PlanetController : MonoBehaviour
 
     void Fire()
     {
-        
-        var bullet = Instantiate(bulletPrefab, shootingPoint.transform.position, shootingPoint. transform.rotation);
-        bullet.GetComponent<Rigidbody2D>().velocity =  shootingPoint.transform.up * bulletSpeed;
+
+        var bullet = Instantiate(bulletPrefab, shootingPoint.transform.position, shootingPoint.transform.rotation);
+        bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.transform.up * bulletSpeed;
     }
 }
+
+
+

@@ -526,6 +526,7 @@ GameObject:
   - component: {fileID: 666094925}
   - component: {fileID: 666094926}
   - component: {fileID: 666094927}
+  - component: {fileID: 666094928}
   m_Layer: 0
   m_Name: Planet1
   m_TagString: Untagged
@@ -675,7 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6a5d9c40fca97478d540173ab5e9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 1
+  rotationSpeed: 5
 --- !u!114 &666094927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -690,6 +691,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pullStrength: 1
   minDistance: 0.1
+--- !u!114 &666094928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666094920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a0c4af8a1efe74a9ac4f4b667fbce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 0
 --- !u!1 &675881321
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,6 +917,8 @@ GameObject:
   - component: {fileID: 917732166}
   - component: {fileID: 917732167}
   - component: {fileID: 917732168}
+  - component: {fileID: 917732169}
+  - component: {fileID: 917732170}
   m_Layer: 0
   m_Name: Planet2
   m_TagString: Untagged
@@ -1067,6 +1083,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pullStrength: 1
   minDistance: 0.1
+--- !u!114 &917732169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917732161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a0c4af8a1efe74a9ac4f4b667fbce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 0
+--- !u!114 &917732170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917732161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6a5d9c40fca97478d540173ab5e9c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 3
 --- !u!1 &997012989
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
-  bulletPrefab: {fileID: 2033617249612280970, guid: 6a5db8faf86862b41843da33a6d11909, type: 3}
+  bulletPrefab: {fileID: 9065649289314823685, guid: 0389333678cb6554dbee4803a2effcef, type: 3}
   bulletSpeed: 10
   planet2: {fileID: 917732161}
   fireCooldown: 0.5

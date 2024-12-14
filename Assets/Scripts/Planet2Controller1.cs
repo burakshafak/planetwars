@@ -42,3 +42,4 @@ public class Planet2Controller : MonoBehaviour
         bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.transform.up * bulletSpeed;
     }
 }
+

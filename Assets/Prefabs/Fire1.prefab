@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 114675987648186143}
   - component: {fileID: 1943473745781154726}
   m_Layer: 0
-  m_Name: Fire
-  m_TagString: Untagged
+  m_Name: Fire1
+  m_TagString: Fire1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,3 +174,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21359544707cabd4b9d7b4ed8b0a0f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletLifeTime: 10

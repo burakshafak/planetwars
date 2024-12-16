@@ -11,6 +11,8 @@ public class PlanetHP : MonoBehaviour
     private float damage = 20f;
     public float startingHealth;
 
+    public GameManager gameManager;
+
     void Start()
     {
         originalScale = transform.localScale;
@@ -55,7 +57,20 @@ public class PlanetHP : MonoBehaviour
         if (transform.localScale.x < 0.1)
         {
             // Handle planet destruction.
-            Destroy(gameObject);
+            
+            if (gameObject.name == "Planet1")
+            {
+                print("Player1 died");
+                gameManager.PlayerDied(1);
+            }
+            else if(gameObject.name ==  "Planet2")
+            {
+                print("Player2 died");
+                gameManager.PlayerDied(2);
+            }
+
+          
+
             return;
         }
 

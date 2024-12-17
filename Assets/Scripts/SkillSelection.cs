@@ -18,6 +18,7 @@ public class SkillSelection : MonoBehaviour
         "IceBlast", "SuperKick"
     };
 
+
     private List<string> currentSkills = new List<string>();
 
     void Start()
@@ -36,24 +37,24 @@ public class SkillSelection : MonoBehaviour
 
     void ChooseSkill(string skill)
     {
-        // Assign the chosen skill to the appropriate player
         if (GameManager.lastRoundLoser == 1 || (GameManager.player1Wins == 0 && GameManager.player2Wins == 0))
         {
-            GameManager.player1Skill = skill;
+            GameManager.player1Skills.Add(skill); // Add skill to Player 1's list
             Debug.Log($"Player 1 chose: {skill}");
+            Debug.Log($"Player 1 Skills: {string.Join(", ", GameManager.player1Skills)}");
         }
         else if (GameManager.lastRoundLoser == 2)
         {
-            GameManager.player2Skill = skill;
+            GameManager.player2Skills.Add(skill); // Add skill to Player 2's list
             Debug.Log($"Player 2 chose: {skill}");
+            Debug.Log($"Player 2 Skills: {string.Join(", ", GameManager.player2Skills)}");
         }
 
-        skillPanel.SetActive(false); // Hide the skill panel after selection
+        skillPanel.SetActive(false);
     }
 
     private void ChooseRandomSkills()
     {
-        // Clear previous skills and listeners
         currentSkills.Clear();
         skill1Button.onClick.RemoveAllListeners();
         skill2Button.onClick.RemoveAllListeners();
@@ -62,25 +63,21 @@ public class SkillSelection : MonoBehaviour
         HashSet<int> selectedIndexes = new HashSet<int>();
         System.Random random = new System.Random();
 
-        // Select 3 unique random skills
         while (selectedIndexes.Count < 3)
         {
             int index = random.Next(allSkills.Count);
             selectedIndexes.Add(index);
         }
 
-        // Fill the currentSkills list
         foreach (int index in selectedIndexes)
         {
             currentSkills.Add(allSkills[index]);
         }
 
-        // Update button texts with the selected skills
         skill1Button.GetComponentInChildren<TextMeshProUGUI>().text = currentSkills[0];
         skill2Button.GetComponentInChildren<TextMeshProUGUI>().text = currentSkills[1];
         skill3Button.GetComponentInChildren<TextMeshProUGUI>().text = currentSkills[2];
 
-        // Add listeners to the buttons dynamically
         skill1Button.onClick.AddListener(() => ChooseSkill(currentSkills[0]));
         skill2Button.onClick.AddListener(() => ChooseSkill(currentSkills[1]));
         skill3Button.onClick.AddListener(() => ChooseSkill(currentSkills[2]));

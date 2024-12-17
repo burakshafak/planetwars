@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
     public static int player2Wins = 0;
     public static int roundsToWin = 2;
 
-    public static string player1Skill = ""; // Skills as strings for now
-    public static string player2Skill = "";
+    public static List<string> player1Skills = new List<string>(); // Store multiple skills
+    public static List<string> player2Skills = new List<string>();
 
     public static int lastRoundLoser = 0;
 
@@ -37,17 +37,14 @@ public class GameManager : MonoBehaviour
             if (player1Wins == 0 && player2Wins == 0)
             {
                 Debug.Log("Round 1: Both players choose a skill.");
-                // Trigger UI or logic for skill selection
             }
             else if (lastRoundLoser == 1)
             {
                 Debug.Log("Player 1 lost the previous round. Player 1 chooses a skill.");
-                // Trigger Player 1 skill selection UI
             }
             else if (lastRoundLoser == 2)
             {
                 Debug.Log("Player 2 lost the previous round. Player 2 chooses a skill.");
-                // Trigger Player 2 skill selection UI
             }
         }
     }
@@ -73,14 +70,38 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        printFinalSkillsOfPlayers();
+
         // Reset everything for a new game
         player1Wins = 0;
         player2Wins = 0;
-        player1Skill = "";
-        player2Skill = "";
+        player1Skills.Clear();
+        player2Skills.Clear();
         lastRoundLoser = 0;
 
         // Load Title Screen or End Game Scene
         SceneManager.LoadScene("GameOverScene");
     }
+
+    public void printFinalSkillsOfPlayers() { 
+        int player1SkillNumber = player1Skills.Count;
+        int player2SkillNumber = player2Skills.Count;
+
+        print("Player 1 skills are:");
+        for(int i = 0; i < player1SkillNumber; i++)
+        {
+            print(player1Skills[i]);
+        }
+
+        print("Player 2 skills are:");
+        for(int i = 0; i < player2SkillNumber; i++)
+        {
+            print(player2Skills[i]);
+        }
+        
+    }
+
+
+
 }
+

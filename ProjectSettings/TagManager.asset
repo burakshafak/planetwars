@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fire1
   - Fire2
+  - Astreoid
   layers:
   - Default
   - TransparentFX

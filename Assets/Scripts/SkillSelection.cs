@@ -8,6 +8,7 @@ public class SkillSelection : MonoBehaviour
 {
     public GameObject skillPanel; // Reference to the skill selection panel
     public GameObject firstRoundSkillPanel;
+    public GameObject gameWorld;
 
     // Buttons for first round (Player 1 and Player 2)
     public Button skill1FirstRoundButtonPlayer1;
@@ -46,6 +47,15 @@ public class SkillSelection : MonoBehaviour
 
     void Start()
     {
+        gameWorld.SetActive(false);
+
+        SkillMethod();
+        
+
+    }
+
+    void SkillMethod()
+    {
         if (GameManager.player1Wins == 0 && GameManager.player2Wins == 0)
         {
             firstRoundSkillPanel.SetActive(true);
@@ -54,7 +64,14 @@ public class SkillSelection : MonoBehaviour
             ChooseRandomSkills(true);
             HighlightButton(player1Buttons, currentSelectionIndexPlayer1, true); // Highlight Player 1's first button
             HighlightButton(player2Buttons, currentSelectionIndexPlayer2, false); // Highlight Player 2's first button
+
+            
+            if (player1Selected && player2Selected)
+            {
+                gameWorld.SetActive(true );
+            }
         }
+
         else if (GameManager.lastRoundLoser > 0)
         {
             skillPanel.SetActive(true);
@@ -62,7 +79,10 @@ public class SkillSelection : MonoBehaviour
             ChooseRandomSkills(false); // New skills for subsequent rounds
             HighlightButton(otherRoundButtons, currentSelectionIndexOtherRound, GameManager.lastRoundLoser == 1); // Highlight based on the last round loser
         }
+
     }
+
+
 
     void Update()
     {
@@ -146,7 +166,8 @@ public class SkillSelection : MonoBehaviour
 
         if (player1Selected && player2Selected)
         {
-            firstRoundSkillPanel.SetActive(false); // Disable first round panel
+            firstRoundSkillPanel.SetActive(false);
+            gameWorld.SetActive(true);// Disable first round panel
         }
     }
 
@@ -167,8 +188,8 @@ public class SkillSelection : MonoBehaviour
 
         if (skillChosen)
         {
-            skillPanel.SetActive(false); // Disable subsequent round panel
-        }
+            skillPanel.SetActive(false);
+            gameWorld.SetActive(true);        }
     }
 
     private void ChooseRandomSkills(bool firstRound)

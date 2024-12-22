@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
 
+    public static bool isGameOver = false;
+
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -53,11 +55,13 @@ public class GameManager : MonoBehaviour
         // Check if a player has won the game
         if (player1Wins == roundsToWin)
         {
+            isGameOver = true;
             Debug.Log("Player 1 Wins the Game!");
             ResetGame();
         }
         else if (player2Wins == roundsToWin)
         {
+            isGameOver = true;
             Debug.Log("Player 2 Wins the Game!");
             ResetGame();
         }
@@ -81,6 +85,9 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDied(int loser)
     {
+
+        if (isGameOver) return;
+
         if (loser == 1)
         {
             player2Wins++;
@@ -95,11 +102,18 @@ public class GameManager : MonoBehaviour
             round++;
           
         }
+        if (player1Wins == roundsToWin || player2Wins == roundsToWin)
+        {
+            isGameOver = true; // Mark the game as over
+            Debug.Log("Game Over condition met!");
+            ResetGame(); // Transition to Game Over scene
+        }
+        else
+        {
+            // Reload the current scene for the next round
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
 
-        Debug.Log($"Player 1 Wins: {player1Wins}, Player 2 Wins: {player2Wins}");
-
-        // Reload the scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ResetGame()

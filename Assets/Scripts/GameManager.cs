@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,11 +20,31 @@ public class GameManager : MonoBehaviour
     public static string player1SkillsString = "";
     public static string player2SkillsString = "";
 
+    public TextMeshProUGUI scoreText;
+
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
     }
 
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Update scoreText UI with the correct round number after the scene reloads
+        if (scoreText != null)
+        {
+            scoreText.text = "Round " + round;
+        }
+    }
 
 
 
@@ -64,11 +85,15 @@ public class GameManager : MonoBehaviour
         {
             player2Wins++;
             lastRoundLoser = 1;
+            round++;
+           
         }
         else if (loser == 2)
         {
             player1Wins++;
             lastRoundLoser = 2;
+            round++;
+          
         }
 
         Debug.Log($"Player 1 Wins: {player1Wins}, Player 2 Wins: {player2Wins}");
@@ -90,6 +115,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("GameOverScene");
         //player1Skills.Clear();
         //player2Skills.Clear();
+        //round = 1;
     }
 
     public string printPlayer1Skills() { 

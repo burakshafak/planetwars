@@ -16,6 +16,15 @@ public class GameManager : MonoBehaviour
 
     public static int round = 1;
 
+    public static string player1SkillsString = "";
+    public static string player2SkillsString = "";
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+
 
 
     void Start()
@@ -49,17 +58,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PlayerDied(int winner)
+    public void PlayerDied(int loser)
     {
-        if (winner == 1)
-        {
-            player1Wins++;
-            lastRoundLoser = 2;
-        }
-        else if (winner == 2)
+        if (loser == 1)
         {
             player2Wins++;
             lastRoundLoser = 1;
+        }
+        else if (loser == 2)
+        {
+            player1Wins++;
+            lastRoundLoser = 2;
         }
 
         Debug.Log($"Player 1 Wins: {player1Wins}, Player 2 Wins: {player2Wins}");
@@ -70,35 +79,45 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        printFinalSkillsOfPlayers();
 
         // Reset everything for a new game
         player1Wins = 0;
         player2Wins = 0;
-        player1Skills.Clear();
-        player2Skills.Clear();
+        
         lastRoundLoser = 0;
 
         // Load Title Screen or End Game Scene
         SceneManager.LoadScene("GameOverScene");
+        //player1Skills.Clear();
+        //player2Skills.Clear();
     }
 
-    public void printFinalSkillsOfPlayers() { 
+    public string printPlayer1Skills() { 
         int player1SkillNumber = player1Skills.Count;
-        int player2SkillNumber = player2Skills.Count;
+        
 
-        print("Player 1 skills are:");
+        
         for(int i = 0; i < player1SkillNumber; i++)
         {
-            print(player1Skills[i]);
+            player1SkillsString = player1SkillsString + "\n" + player1Skills[i];
         }
-
-        print("Player 2 skills are:");
-        for(int i = 0; i < player2SkillNumber; i++)
-        {
-            print(player2Skills[i]);
-        }
+        print("Player 1 skills are:" + player1SkillsString);
+        return player1SkillsString;
         
+        
+    }
+
+    public string printPlayer2Sills()
+    {
+        int player2SkillNumber = player2Skills.Count;
+
+        
+        for (int i = 0; i < player2SkillNumber; i++)
+        {
+            player2SkillsString = player2SkillsString + "\n" + player2Skills[i];
+        }
+        print("Player 2 skills are:" + player2SkillsString);
+        return player2SkillsString;
     }
 
 

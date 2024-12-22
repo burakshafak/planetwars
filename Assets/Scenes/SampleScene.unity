@@ -1574,6 +1574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5acd5be1ba78f46ba476bf1529eb2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 916213951}
 --- !u!4 &632474650
 Transform:
   m_ObjectHideFlags: 0
@@ -2163,7 +2164,7 @@ Transform:
   m_GameObject: {fileID: 726317196}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.7, y: 2.1, z: 0}
+  m_LocalPosition: {x: 10.56, y: 4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2538,7 +2539,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ROUND 1
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -2565,7 +2566,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
+  m_fontSize: 96
   m_fontSizeBase: 56
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2879,7 +2880,7 @@ Transform:
   m_GameObject: {fileID: 997012989}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.69, y: 2.96, z: 0}
+  m_LocalPosition: {x: -0.93, y: -0.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

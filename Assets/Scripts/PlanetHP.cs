@@ -16,6 +16,8 @@ public class PlanetHP : MonoBehaviour
     [SerializeField] private  float starPower = 2.5f;
     [SerializeField] private float astreoidDamage = 12.5f;
 
+    private Vector3 damageRate;
+
     void Start()
     {
         originalScale = transform.localScale;
@@ -34,7 +36,7 @@ public class PlanetHP : MonoBehaviour
             if (other.CompareTag("Fire2"))
             {
                 Destroy(other.gameObject); // Destroy the asteroid.
-                TakeDamage(isfire); // Example damage value.
+                TakeFireDamage(isfire); // Example damage value.
             }
         }
 
@@ -43,7 +45,7 @@ public class PlanetHP : MonoBehaviour
             if (other.CompareTag("Fire1"))
             {
                 Destroy(other.gameObject); // Destroy the asteroid.
-                TakeDamage(isfire); // Example damage value.
+                TakeFireDamage(isfire); // Example damage value.
             }
         }
 
@@ -56,9 +58,10 @@ public class PlanetHP : MonoBehaviour
 
         if (other.CompareTag("Astreoid"))
         {
+            damageRate = other.transform.localScale;
             isfire = false;
             print("Collided with an astreoid.");
-            TakeDamage(isfire);
+            TakeAstreoidDamage(damageRate);
             Destroy(other.gameObject);  
 
         }
@@ -66,7 +69,7 @@ public class PlanetHP : MonoBehaviour
 
     }
 
-    private void TakeDamage(bool fire)
+    private void TakeFireDamage(bool fire)
     {
         if (fire)
         {
@@ -100,6 +103,33 @@ public class PlanetHP : MonoBehaviour
             return;
         }
 
+    }
+
+    private void TakeAstreoidDamage(Vector3 damageRatee)
+    {
+
+        currentHealth = currentHealth - (astreoidDamage * damageRatee.x);
+
+        // Adjust the planet's size based on health.
+        float healthRatio = currentHealth / startingHealth;
+        transform.localScale = originalScale * healthRatio;
+
+        if (transform.localScale.x < 0.1)
+        {
+            // Handle planet destruction.
+
+            if (gameObject.name == "Planet1")
+            {
+                print("Player1 died");
+                gameManager.PlayerDied(1);
+            }
+            else if (gameObject.name == "Planet2")
+            {
+                print("Player2 died");
+                gameManager.PlayerDied(2);
+            }
+            return;
+        }
 
     }
 

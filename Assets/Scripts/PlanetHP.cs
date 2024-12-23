@@ -8,13 +8,13 @@ public class PlanetHP : MonoBehaviour
 {
     private Vector3 originalScale;
     private float currentHealth;
-    private float damage = 20f;
+    private float damage = 10f;
     public float startingHealth;
 
     public GameManager gameManager;
 
-    [SerializeField] private  float starPower = 5;
-    [SerializeField] private float astreoidDamage = 25;
+    [SerializeField] private  float starPower = 2.5f;
+    [SerializeField] private float astreoidDamage = 12.5f;
 
     void Start()
     {

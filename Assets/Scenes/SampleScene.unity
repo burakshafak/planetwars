@@ -1885,7 +1885,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -9.27, y: -3.92, z: -0.051235408}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 252828933}
@@ -1965,7 +1965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6a5d9c40fca97478d540173ab5e9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 12
+  rotationSpeed: 24
 --- !u!114 &666094927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2262,9 +2262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b55f77114c4dc4aa3f74046a29f3b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1
+  movementSpeed: 5
   bulletPrefab: {fileID: 2033617249612280970, guid: 6a5db8faf86862b41843da33a6d11909, type: 3}
-  bulletSpeed: 10
+  bulletSpeed: 20
   planet1: {fileID: 666094920}
   fireCooldown: 0.5
   shootingPoint: {fileID: 252828932}
@@ -2777,7 +2777,6 @@ GameObject:
   - component: {fileID: 917732167}
   - component: {fileID: 917732168}
   - component: {fileID: 917732169}
-  - component: {fileID: 917732170}
   m_Layer: 0
   m_Name: Planet2
   m_TagString: Untagged
@@ -2795,7 +2794,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.85, y: 3.39, z: -0.051235408}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 592994769}
@@ -2813,7 +2812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6a5d9c40fca97478d540173ab5e9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 12
+  rotationSpeed: 24
 --- !u!212 &917732165
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2958,19 +2957,6 @@ MonoBehaviour:
   gameManager: {fileID: 632474649}
   starPower: 5
   astreoidDamage: 25
---- !u!114 &917732170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 917732161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf6a5d9c40fca97478d540173ab5e9c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 16
 --- !u!1 &947568156
 GameObject:
   m_ObjectHideFlags: 0
@@ -3047,9 +3033,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46eeb70a7b1f86b47a035d016951b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1
+  movementSpeed: 10
   bulletPrefab: {fileID: 9065649289314823685, guid: 0389333678cb6554dbee4803a2effcef, type: 3}
-  bulletSpeed: 10
+  bulletSpeed: 20
   planet2: {fileID: 917732161}
   fireCooldown: 0.5
   shootingPoint: {fileID: 592994768}

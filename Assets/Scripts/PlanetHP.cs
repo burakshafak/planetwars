@@ -13,10 +13,11 @@ public class PlanetHP : MonoBehaviour
 
     public GameManager gameManager;
 
-    [SerializeField] private  float starPower = 2.5f;
+    [SerializeField] private  float starPower = 5f;
     [SerializeField] private float astreoidDamage = 12.5f;
 
     private Vector3 damageRate;
+    private Vector3 healRate;
 
     void Start()
     {
@@ -51,8 +52,9 @@ public class PlanetHP : MonoBehaviour
 
         if (other.CompareTag("Star"))
         {
+            healRate = other.transform.localScale;
             print("Collected a star.");
-            heal();
+            heal(healRate);
             Destroy(other.gameObject);
         }
 
@@ -79,7 +81,6 @@ public class PlanetHP : MonoBehaviour
         {
             currentHealth -= astreoidDamage;
         }
-
 
 
         // Adjust the planet's size based on health.
@@ -133,9 +134,9 @@ public class PlanetHP : MonoBehaviour
 
     }
 
-    private void heal()
+    private void heal(Vector3 healRatee)
     {
-        currentHealth = currentHealth + starPower;
+        currentHealth = currentHealth + (starPower + healRatee.x);
         float healthRatio = currentHealth / startingHealth;
         transform.localScale = originalScale * healthRatio;
 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4809197481517955827}
   - component: {fileID: 4487046715351716237}
   - component: {fileID: 8651644082053099175}
+  - component: {fileID: -7525579088561389545}
   m_Layer: 0
   m_Name: star 3
   m_TagString: Star
@@ -163,3 +164,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pullStrength: 50
   minDistance: 0.1
+--- !u!114 &-7525579088561389545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068591495844545508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e5c48aab2716241b8dd3b7a96b87b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 100
+  startingHealth: 0

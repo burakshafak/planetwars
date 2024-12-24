@@ -2164,7 +2164,8 @@ MonoBehaviour:
   startingHealth: 100
   gameManager: {fileID: 632474649}
   starPower: 5
-  astreoidDamage: 5
+  astreoidDamage: 1
+  fireDamage: 2
 --- !u!1 &675881321
 GameObject:
   m_ObjectHideFlags: 0
@@ -2433,7 +2434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 36
   bulletPrefab: {fileID: 2033617249612280970, guid: 6a5db8faf86862b41843da33a6d11909, type: 3}
-  bulletSpeed: 80
+  bulletSpeed: 100
   planet1: {fileID: 666094920}
   fireCooldown: 0.5
   shootingPoint: {fileID: 252828932}
@@ -3120,7 +3121,8 @@ MonoBehaviour:
   startingHealth: 100
   gameManager: {fileID: 632474649}
   starPower: 5
-  astreoidDamage: 5
+  astreoidDamage: 1
+  fireDamage: 2
 --- !u!1 &947568156
 GameObject:
   m_ObjectHideFlags: 0
@@ -3327,7 +3329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 64
   bulletPrefab: {fileID: 9065649289314823685, guid: 0389333678cb6554dbee4803a2effcef, type: 3}
-  bulletSpeed: 20
+  bulletSpeed: 100
   planet2: {fileID: 917732161}
   fireCooldown: 0.5
   shootingPoint: {fileID: 592994768}

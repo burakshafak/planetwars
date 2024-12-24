@@ -8,13 +8,14 @@ public class PlanetHP : MonoBehaviour
 {
     private Vector3 originalScale;
     private float currentHealth;
-    private float damage = 2f;
+    
     public float startingHealth = 100;
 
     public GameManager gameManager;
 
     [SerializeField] private  float starPower = 5f;
-    [SerializeField] private float astreoidDamage = 2.5f;
+    [SerializeField] private float astreoidDamage = 1f;
+    [SerializeField] private float fireDamage = 2f;
 
     private Vector3 damageRate;
     private Vector3 healRate;
@@ -37,14 +38,12 @@ public class PlanetHP : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
-        bool isfire = true;
         if (gameObject.name == "Planet1")
         {
             if (other.CompareTag("Fire2"))
             {
                 Destroy(other.gameObject); // Destroy the asteroid.
-                TakeFireDamage(isfire); // Example damage value.
+                TakeFireDamage(); // Example damage value.
                 audioManager.GameSFX(audioManager.damage);
 
             }
@@ -57,7 +56,7 @@ public class PlanetHP : MonoBehaviour
                 
 
                 Destroy(other.gameObject); // Destroy the asteroid.
-                TakeFireDamage(isfire); // Example damage value.
+                TakeFireDamage(); // Example damage value.
                 audioManager.GameSFX(audioManager.damage);
 
             }
@@ -77,10 +76,8 @@ public class PlanetHP : MonoBehaviour
 
         if (other.CompareTag("Astreoid"))
         {
-            
 
             damageRate = other.transform.localScale;
-            isfire = false;
             print("Collided with an astreoid.");
             TakeAstreoidDamage(damageRate);
             audioManager.GameSFX(audioManager.astreoid);
@@ -92,22 +89,10 @@ public class PlanetHP : MonoBehaviour
 
     }
 
-    private void TakeFireDamage(bool fire)
+    private void TakeFireDamage()
     {
-        if (fire)
-        {
-            
-
-            currentHealth -= damage;
-            audioManager.GameSFX(audioManager.damage);
-
-        }
-        else if (!fire)
-        {
-            currentHealth -= astreoidDamage;
-            audioManager.GameSFX(audioManager.damage);
-        }
-
+        currentHealth -= fireDamage;
+        audioManager.GameSFX(audioManager.damage);
 
         // Adjust the planet's size based on health.
         float healthRatio = currentHealth / startingHealth;
@@ -136,8 +121,7 @@ public class PlanetHP : MonoBehaviour
     {
 
         currentHealth = currentHealth - (astreoidDamage * damageRatee.x);
-
-        
+  
 
         // Adjust the planet's size based on health.
         float healthRatio = currentHealth / startingHealth;
@@ -168,11 +152,6 @@ public class PlanetHP : MonoBehaviour
         float healthRatio = currentHealth / startingHealth;
         transform.localScale = originalScale * healthRatio;
         audioManager.GameSFX(audioManager.star);
-
-
     }
-
-
-
 
 }

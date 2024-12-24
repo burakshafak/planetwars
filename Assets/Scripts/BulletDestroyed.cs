@@ -16,7 +16,7 @@ public class BulletDestroyed : MonoBehaviour
     {
         if (collision != null)
         {
-            print("Collided with " + collision.gameObject.name);
+            print("Bullet hit " + collision.gameObject.name);
 
             if (gameObject.tag == "Fire1")
             {
@@ -31,6 +31,12 @@ public class BulletDestroyed : MonoBehaviour
                 {
                     Destroy(gameObject);
                 }
+            }
+
+            if (collision.CompareTag("Astreoid") || collision.CompareTag("Star"))
+            {
+                print("Bullet hit:" + collision.gameObject);
+                
             }
 
 

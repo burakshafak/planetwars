@@ -6,28 +6,23 @@ public class HP : MonoBehaviour
 {
     private Vector3 originalScale;
     private float currentHealth;
-    [SerializeField] private float damage = 20f;
+    [SerializeField] private float damage = 100f;
     public float startingHealth;
-    // Start is called before the first frame update
+    
     void Start()
     {
         originalScale = transform.localScale;
         startingHealth = originalScale.x * 100;
         currentHealth = startingHealth;
-        print("The name of the game object: " + gameObject.name);
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+   
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Fire1") || other.CompareTag("Fire2"))
         {
+            print(gameObject.name + " is hit by a bullet.");
             currentHealth = currentHealth - damage;
             float healthRatio = currentHealth / startingHealth;
             transform.localScale = originalScale * healthRatio;
@@ -36,9 +31,7 @@ public class HP : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-        }
-        
-        
+        }             
 
     }
 }

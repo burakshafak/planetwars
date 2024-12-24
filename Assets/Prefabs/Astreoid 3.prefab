@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240e13310c9ca394c9dc280789145b61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pullStrength: 6
+  pullStrength: 50
   minDistance: 0.1
 --- !u!114 &60145791337177018
 MonoBehaviour:
@@ -190,5 +190,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e5c48aab2716241b8dd3b7a96b87b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 2
   startingHealth: 0

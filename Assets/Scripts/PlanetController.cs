@@ -7,7 +7,7 @@ public class PlanetController : MonoBehaviour
     [SerializeField] private float movementSpeed = 1;
 
     public GameObject bulletPrefab;
-    [SerializeField] public float bulletSpeed = 1;
+    [SerializeField] public float bulletSpeed = 10;
 
     public GameObject planet1;
 
@@ -17,7 +17,12 @@ public class PlanetController : MonoBehaviour
 
     public GameObject shootingPoint;
 
+    AudioManager audioManager;
 
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -46,7 +51,7 @@ public class PlanetController : MonoBehaviour
 
     void Fire()
     {
-
+        audioManager.GameSFX(audioManager.fire);
         var bullet = Instantiate(bulletPrefab, shootingPoint.transform.position, shootingPoint.transform.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.transform.up * bulletSpeed;
     }

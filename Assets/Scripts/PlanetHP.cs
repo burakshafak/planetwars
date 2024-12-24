@@ -9,7 +9,7 @@ public class PlanetHP : MonoBehaviour
     private Vector3 originalScale;
     private float currentHealth;
     private float damage = 2f;
-    public float startingHealth;
+    public float startingHealth = 100;
 
     public GameManager gameManager;
 

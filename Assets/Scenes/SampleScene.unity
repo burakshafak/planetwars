@@ -929,6 +929,66 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289430071}
   m_CullTransparentMesh: 1
+--- !u!1 &323632815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 323632816}
+  - component: {fileID: 323632818}
+  - component: {fileID: 323632817}
+  m_Layer: 0
+  m_Name: DamageAnimation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &323632816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323632815}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 666094922}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &323632817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323632815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a28ddb86e11f409429106a0d2081c9e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!111 &323632818
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323632815}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 46d9b92f79b9bf14ba2729c1e17bf16d, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &373205176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,6 +2057,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 252828933}
+  - {fileID: 323632816}
   m_Father: {fileID: 726317197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &666094923
@@ -2100,7 +2161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5a0c4af8a1efe74a9ac4f4b667fbce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 0
+  startingHealth: 100
   gameManager: {fileID: 632474649}
   starPower: 5
   astreoidDamage: 5
@@ -3056,7 +3117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5a0c4af8a1efe74a9ac4f4b667fbce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 0
+  startingHealth: 100
   gameManager: {fileID: 632474649}
   starPower: 5
   astreoidDamage: 5
@@ -4340,7 +4401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 241187718}
   SFXSource: {fileID: 953882344}
-  background: {fileID: 8300000, guid: 6a846af25936dcc4d8f516d024a7e672, type: 3}
+  background: {fileID: 8300000, guid: 24be7075e68b1814a934cd12c8e04cc9, type: 3}
   fire: {fileID: 8300000, guid: 7c07364c897532e47bfb28a1b8f35fc2, type: 3}
   damage: {fileID: 8300000, guid: 65d61f9b9070ac34a99c2acfa192ce7f, type: 3}
   star: {fileID: 8300000, guid: 1705df466e01a9b49ac546cad6a75123, type: 3}

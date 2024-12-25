@@ -1,8 +1,8 @@
 using UnityEngine;
-
+using System;
 public class Planet2Controller : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 1;
+    [SerializeField] private float movementSpeed = 80;
 
     public GameObject bulletPrefab;
     [SerializeField] public float bulletSpeed = 6;
@@ -17,6 +17,12 @@ public class Planet2Controller : MonoBehaviour
 
     AudioManager audioManager;
 
+    private Vector3 scale;
+
+    Transform childTransform;
+
+   
+
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -25,12 +31,25 @@ public class Planet2Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //get the Input from Horizontal axis
+        if (gameObject.activeSelf)
+        {
+            childTransform = transform.Find("Planet2");
+            if (childTransform == null)
+            {
+                print("child transform could not be found");
+            }
+
+            scale = childTransform.localScale;
+        }
+
         float horizontalInput = Input.GetAxis("Horizontal");
         //get the Input from Vertical axis
         float verticalInput = Input.GetAxis("Vertical");
 
-        transform.position = transform.position + new Vector3(horizontalInput * movementSpeed * Time.deltaTime, verticalInput * movementSpeed * Time.deltaTime, 0);
+        float horizontalSpeed = (horizontalInput * movementSpeed) /(float)Math.Sqrt(scale.x);
+        float verticalSpeed = (verticalInput * movementSpeed) /(float)Math.Sqrt (scale.x);
+
+        transform.position = transform.position + new Vector3(horizontalSpeed * Time.deltaTime, verticalSpeed * Time.deltaTime, 0);
 
         if (Input.GetButtonUp("Fire2") && Time.time > lastFireTime + fireCooldown)
         {

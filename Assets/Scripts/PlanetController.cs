@@ -52,14 +52,18 @@ public class PlanetController : MonoBehaviour
         float horizontalSpeed = (horizontalInput * movementSpeed) / (float)Math.Sqrt(scale.x);
         float verticalSpeed = (verticalInput * movementSpeed) / (float)Math.Sqrt(scale.x);
 
-        //update the position
-        transform.position = transform.position + new Vector3(horizontalSpeed * Time.deltaTime, verticalSpeed * Time.deltaTime, 0);
-
-        if (Input.GetButtonUp("Fire1") && Time.time > lastFireTime + fireCooldown)
+        if(scale.x > 0.01)
         {
-            Fire();
-            lastFireTime = Time.time;
+            //update the position
+            transform.position = transform.position + new Vector3(horizontalSpeed * Time.deltaTime, verticalSpeed * Time.deltaTime, 0);
+
+            if (Input.GetButtonUp("Fire1") && Time.time > lastFireTime + fireCooldown)
+            {
+                Fire();
+                lastFireTime = Time.time;
+            }
         }
+        
 
     }
 

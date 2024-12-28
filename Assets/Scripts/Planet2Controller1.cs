@@ -49,13 +49,17 @@ public class Planet2Controller : MonoBehaviour
         float horizontalSpeed = (horizontalInput * movementSpeed) /(float)Math.Sqrt(scale.x);
         float verticalSpeed = (verticalInput * movementSpeed) /(float)Math.Sqrt (scale.x);
 
-        transform.position = transform.position + new Vector3(horizontalSpeed * Time.deltaTime, verticalSpeed * Time.deltaTime, 0);
-
-        if (Input.GetButtonUp("Fire2") && Time.time > lastFireTime + fireCooldown)
+        if(scale.x> 0.01f)
         {
-            Fire();
-            lastFireTime = Time.time;
+            transform.position = transform.position + new Vector3(horizontalSpeed * Time.deltaTime, verticalSpeed * Time.deltaTime, 0);
+
+            if (Input.GetButtonUp("Fire2") && Time.time > lastFireTime + fireCooldown)
+            {
+                Fire();
+                lastFireTime = Time.time;
+            }
         }
+        
 
 
     }

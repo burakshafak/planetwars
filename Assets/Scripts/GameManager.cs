@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,6 +25,16 @@ public class GameManager : MonoBehaviour
 
     public static bool isGameOver = false;
 
+    public GameObject planet1;
+    public GameObject planet2;
+    [SerializeField] private Transform transform1;
+    [SerializeField] private Transform transform2;
+
+    [SerializeField] int x1 = -100;
+    [SerializeField] int x2 = 100;
+    [SerializeField] int y1 = -70;
+    [SerializeField] int y2 = 70;
+ 
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -41,17 +52,43 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Update scoreText UI with the correct round number after the scene reloads
+        // Update scoreText UI
         if (scoreText != null)
         {
             scoreText.text = "Round " + round;
         }
+
+        if (!isGameOver)
+        {
+            // Reassign planet references
+            planet1 = GameObject.Find("Planet1Control");
+            planet2 = GameObject.Find("Planet2Control");
+
+            if (planet1 != null)
+                transform1 = planet1.transform;
+            else
+                Debug.LogError("Planet1 not found!");
+
+            if (planet2 != null)
+                transform2 = planet2.transform;
+            else
+                Debug.LogError("Planet2 not found!");
+
+            // Randomize positions
+            RandomizePlanetPositions();
+        }
+
+        
     }
+
 
 
 
     void Start()
     {
+        //Transform transform1 = planet1.GetComponent<Transform>();
+        //Transform transform2 = planet2.GetComponent<Transform>();
+
         // Check if a player has won the game
         if (player1Wins == roundsToWin)
         {
@@ -112,9 +149,30 @@ public class GameManager : MonoBehaviour
         {
             // Reload the current scene for the next round
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
         }
 
     }
+
+    private void RandomizePlanetPositions()
+    {
+        int x11 = Random.Range(x1, x2);
+        int y11 = Random.Range(y1, y2);
+        int x22 = Random.Range(x1, x2);
+        int y22 = Random.Range(y1, y2);
+        UnityEngine.Vector3 planet1randomPosition = new UnityEngine.Vector3(x11, y11, 0);
+        transform1.position = planet1randomPosition;
+        print(transform1.position.x);
+        print(transform1.position.y);
+
+
+        UnityEngine.Vector3 planet2randomPosition = new UnityEngine.Vector3(x22, y22, 0);
+        transform2.position = planet2randomPosition;
+
+
+    }
+
+
 
     public void ResetGame()
     {

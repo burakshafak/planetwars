@@ -9,6 +9,7 @@ TagManager:
   - Astreoid
   - Star
   - Audio
+  - Explosion
   layers:
   - Default
   - TransparentFX

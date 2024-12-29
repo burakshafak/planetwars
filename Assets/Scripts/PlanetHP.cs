@@ -21,7 +21,7 @@ public class PlanetHP : MonoBehaviour
     private Vector3 healRate;
 
     AudioManager audioManager;
-    
+   
 
     private void Awake()
     {
@@ -35,6 +35,7 @@ public class PlanetHP : MonoBehaviour
         startingHealth = originalScale.x * 100;
         currentHealth = startingHealth;
         print("The name of the game object: " + gameObject.name);
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -94,6 +95,9 @@ public class PlanetHP : MonoBehaviour
     {
         currentHealth -= fireDamage;
         audioManager.GameSFX(audioManager.damage);
+       
+
+
 
         // Adjust the planet's size based on health.
         float healthRatio = currentHealth / startingHealth;

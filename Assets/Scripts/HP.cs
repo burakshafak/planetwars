@@ -8,7 +8,15 @@ public class HP : MonoBehaviour
     private float currentHealth;
     [SerializeField] private float damage = 100f;
     public float startingHealth;
-    
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
+
     void Start()
     {
         originalScale = transform.localScale;
@@ -26,6 +34,8 @@ public class HP : MonoBehaviour
             currentHealth = currentHealth - damage;
             float healthRatio = currentHealth / startingHealth;
             transform.localScale = originalScale * healthRatio;
+            audioManager.GameSFX(audioManager.damage);
+
 
             if (transform.localScale.x < 0.1)
             {

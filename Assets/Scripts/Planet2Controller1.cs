@@ -59,7 +59,7 @@ public class Planet2Controller : MonoBehaviour
             Vector3 targetVelocity = new Vector3(horizontalSpeed, verticalSpeed, 0);
 
             // Smoothly interpolate velocity toward the target
-            velocity = Vector3.Lerp(velocity, targetVelocity, 0.1f);
+            velocity = Vector3.Lerp(velocity, targetVelocity, 0.01f);
 
             // Apply the velocity to move the planet
             transform.position += velocity * Time.deltaTime;
@@ -67,7 +67,7 @@ public class Planet2Controller : MonoBehaviour
             // Optional: Gradual drag when no input is provided
             if (horizontalInput == 0 && verticalInput == 0)
             {
-                velocity = Vector3.Lerp(velocity, Vector3.zero, 0.05f); // Adjust drag strength with 0.01f
+                velocity = Vector3.Lerp(velocity, Vector3.zero, 0.001f); // Adjust drag strength with 0.01f
             }
 
             // Handle firing

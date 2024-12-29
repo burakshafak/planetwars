@@ -1883,7 +1883,7 @@ GameObject:
   - component: {fileID: 666094928}
   m_Layer: 3
   m_Name: Planet1
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1985,7 +1985,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.004830934}
@@ -2062,6 +2062,7 @@ MonoBehaviour:
   starPower: 5
   astreoidDamage: 0.5
   fireDamage: 2
+  planetDamage: 20
 --- !u!1 &675881321
 GameObject:
   m_ObjectHideFlags: 0
@@ -2840,7 +2841,7 @@ GameObject:
   - component: {fileID: 917732169}
   m_Layer: 3
   m_Name: Planet2
-  m_TagString: Untagged
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2955,10 +2956,10 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.042838905, y: -0.021419771}
+  m_Offset: {x: 0.06, y: 0.1}
   serializedVersion: 2
   m_Radius: 3.6346428
 --- !u!50 &917732167
@@ -3019,6 +3020,7 @@ MonoBehaviour:
   starPower: 5
   astreoidDamage: 0.2
   fireDamage: 0.2
+  planetDamage: 5
 --- !u!1 &947568156
 GameObject:
   m_ObjectHideFlags: 0

@@ -102,22 +102,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 2 Wins the Game!");
             ResetGame();
         }
-        else
-        {
-            // Determine skill selection at the start of each round
-            if (player1Wins == 0 && player2Wins == 0)
-            {
-                Debug.Log("Round 1: Both players choose a skill.");
-            }
-            else if (lastRoundLoser == 1)
-            {
-                Debug.Log("Player 1 lost the previous round. Player 1 chooses a skill.");
-            }
-            else if (lastRoundLoser == 2)
-            {
-                Debug.Log("Player 2 lost the previous round. Player 2 chooses a skill.");
-            }
-        }
+        
     }
 
     public void PlayerDied(int loser)
@@ -162,8 +147,7 @@ public class GameManager : MonoBehaviour
         int y22 = Random.Range(y1, y2);
         UnityEngine.Vector3 planet1randomPosition = new UnityEngine.Vector3(x11, y11, 0);
         transform1.position = planet1randomPosition;
-        print(transform1.position.x);
-        print(transform1.position.y);
+        
 
 
         UnityEngine.Vector3 planet2randomPosition = new UnityEngine.Vector3(x22, y22, 0);

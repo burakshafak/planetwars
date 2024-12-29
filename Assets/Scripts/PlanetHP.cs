@@ -16,11 +16,15 @@ public class PlanetHP : MonoBehaviour
     [SerializeField] private  float starPower = 5f;
     [SerializeField] private float astreoidDamage = 1f;
     [SerializeField] private float fireDamage = 2f;
+    [SerializeField] private float planetDamage = 0.0001f;
 
     private Vector3 damageRate;
     private Vector3 healRate;
+    private Vector3 planetDamageRate;
 
     AudioManager audioManager;
+
+    
    
 
     private void Awake()
@@ -31,10 +35,8 @@ public class PlanetHP : MonoBehaviour
     void Start()
     {
         originalScale = transform.localScale;
-        print("Original scale of the planet:" + originalScale.x);
         startingHealth = originalScale.x * 100;
         currentHealth = startingHealth;
-        print("The name of the game object: " + gameObject.name);
         
     }
 
@@ -56,7 +58,6 @@ public class PlanetHP : MonoBehaviour
             if (other.CompareTag("Fire1"))
             {
                 
-
                 Destroy(other.gameObject); // Destroy the asteroid.
                 TakeFireDamage(); // Example damage value.
                 audioManager.GameSFX(audioManager.damage);
@@ -88,7 +89,68 @@ public class PlanetHP : MonoBehaviour
 
         }
 
+        if (other.CompareTag("Player1"))
+        {
+            print("Planets collided");
+            planetDamageRate = other.transform.localScale;
+            if (gameObject.name == "Planet2")
+            {
+                TakePlanetDamage(planetDamageRate);
+            }
+        }
 
+        if (other.CompareTag("Player2"))
+        {
+            print("Planets collided");
+            planetDamageRate = other.transform.localScale;
+            if (gameObject.name == "Planet1")
+            {
+                TakePlanetDamage(planetDamageRate);
+            }
+        }
+
+
+    }
+
+    private void TakePlanetDamage(Vector3 damageRatee)
+    {
+        print("Current health of the Planet2 before the impact:");
+        if(gameObject.name == "Planet2")
+        {
+            print(currentHealth);
+        }
+        
+        currentHealth = currentHealth - (planetDamage * damageRatee.x);
+        print("Current health of the Planet2 after the impact:");
+        if (gameObject.name == "Planet2")
+        {
+            print(currentHealth);
+        }
+
+
+        // Adjust the planet's size based on health.
+        float healthRatio = currentHealth / startingHealth;
+        transform.localScale = originalScale * healthRatio;
+        audioManager.GameSFX(audioManager.astreoid);
+
+
+
+        if (transform.localScale.x < 0.01)
+        {
+            // Handle planet destruction.
+
+            if (gameObject.name == "Planet1")
+            {
+                print("Player1 died");
+                gameManager.PlayerDied(1);
+            }
+            else if (gameObject.name == "Planet2")
+            {
+                print("Player2 died");
+                gameManager.PlayerDied(2);
+            }
+            return;
+        }
     }
 
     private void TakeFireDamage()
@@ -96,8 +158,6 @@ public class PlanetHP : MonoBehaviour
         currentHealth -= fireDamage;
         audioManager.GameSFX(audioManager.damage);
        
-
-
 
         // Adjust the planet's size based on health.
         float healthRatio = currentHealth / startingHealth;

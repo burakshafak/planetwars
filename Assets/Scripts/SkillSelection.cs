@@ -154,13 +154,11 @@ public class SkillSelection : MonoBehaviour
         if (player == 1 && !player1Selected)
         {
             GameManager.player1Skills.Add(skill); // Save Player 1's skill
-            Debug.Log($"Player 1 chose: {skill}");
             player1Selected = true;
         }
         else if (player == 2 && !player2Selected)
         {
             GameManager.player2Skills.Add(skill); // Save Player 2's skill
-            Debug.Log($"Player 2 chose: {skill}");
             player2Selected = true;
         }
 

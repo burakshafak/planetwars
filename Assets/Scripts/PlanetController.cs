@@ -5,14 +5,14 @@ using System;
 
 public class PlanetController : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 80;
+    [SerializeField] private float movementSpeed = 96;
 
     public GameObject bulletPrefab;
     [SerializeField] public float bulletSpeed = 10;
 
     public GameObject planet1;
 
-    [SerializeField] private float fireCooldown = 2f;
+    [SerializeField] private float fireCooldown = 1f;
 
     private float lastFireTime = 0f;
 
@@ -23,7 +23,9 @@ public class PlanetController : MonoBehaviour
     private Vector3 scale;
     Transform childTransform;
 
-   
+    private Vector3 velocity = Vector3.zero;
+
+
 
     private void Awake()
     {
@@ -54,8 +56,19 @@ public class PlanetController : MonoBehaviour
 
         if(scale.x > 0.01)
         {
-            //update the position
-            transform.position = transform.position + new Vector3(horizontalSpeed * Time.deltaTime, verticalSpeed * Time.deltaTime, 0);
+            Vector3 targetVelocity = new Vector3(horizontalSpeed, verticalSpeed, 0);
+
+            // Smoothly interpolate velocity toward the target
+            velocity = Vector3.Lerp(velocity, targetVelocity, 0.001f);
+
+            // Apply the velocity to move the planet
+            transform.position += velocity * Time.deltaTime;
+
+            // Optional: Gradual drag when no input is provided
+            if (horizontalInput == 0 && verticalInput == 0)
+            {
+                velocity = Vector3.Lerp(velocity, Vector3.zero, 0.0001f); // Adjust drag strength with 0.01f
+            }
 
             if (Input.GetButtonUp("Fire1") && Time.time > lastFireTime + fireCooldown)
             {

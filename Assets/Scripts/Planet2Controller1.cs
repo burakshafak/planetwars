@@ -1,15 +1,16 @@
 using UnityEngine;
 using System;
+
 public class Planet2Controller : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 80;
+    [SerializeField] private float movementSpeed = 150;
 
     public GameObject bulletPrefab;
-    [SerializeField] public float bulletSpeed = 6;
+    [SerializeField] public float bulletSpeed = 12;
 
     public GameObject planet2;
 
-    [SerializeField] private float fireCooldown = 2f;
+    [SerializeField] private float fireCooldown = 0.5f;
 
     private float lastFireTime = 0f;
 
@@ -21,7 +22,8 @@ public class Planet2Controller : MonoBehaviour
 
     Transform childTransform;
 
-   
+    // Velocity vector for inertia
+    private Vector3 velocity = Vector3.zero;
 
     private void Awake()
     {
@@ -42,26 +44,39 @@ public class Planet2Controller : MonoBehaviour
             scale = childTransform.localScale;
         }
 
+        // Get player input
         float horizontalInput = Input.GetAxis("Horizontal");
-        //get the Input from Vertical axis
         float verticalInput = Input.GetAxis("Vertical");
 
-        float horizontalSpeed = (horizontalInput * movementSpeed) /(float)Math.Sqrt(scale.x);
-        float verticalSpeed = (verticalInput * movementSpeed) /(float)Math.Sqrt (scale.x);
+        // Calculate input-based speed
+        float horizontalSpeed = (horizontalInput * movementSpeed) / (float)Math.Sqrt(scale.x);
+        float verticalSpeed = (verticalInput * movementSpeed) / (float)Math.Sqrt(scale.x);
 
-        if(scale.x> 0.01f)
+        // Add inertia to movement
+        if (scale.x > 0.01f)
         {
-            transform.position = transform.position + new Vector3(horizontalSpeed * Time.deltaTime, verticalSpeed * Time.deltaTime, 0);
+            // Target velocity from input
+            Vector3 targetVelocity = new Vector3(horizontalSpeed, verticalSpeed, 0);
 
+            // Smoothly interpolate velocity toward the target
+            velocity = Vector3.Lerp(velocity, targetVelocity, 0.1f);
+
+            // Apply the velocity to move the planet
+            transform.position += velocity * Time.deltaTime;
+
+            // Optional: Gradual drag when no input is provided
+            if (horizontalInput == 0 && verticalInput == 0)
+            {
+                velocity = Vector3.Lerp(velocity, Vector3.zero, 0.05f); // Adjust drag strength with 0.01f
+            }
+
+            // Handle firing
             if (Input.GetButtonUp("Fire2") && Time.time > lastFireTime + fireCooldown)
             {
                 Fire();
                 lastFireTime = Time.time;
             }
         }
-        
-
-
     }
 
     void Fire()
@@ -69,9 +84,5 @@ public class Planet2Controller : MonoBehaviour
         audioManager.GameSFX(audioManager.fire);
         var bullet = Instantiate(bulletPrefab, shootingPoint.transform.position, shootingPoint.transform.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.transform.up * bulletSpeed;
-
-
-
     }
 }
-

@@ -21,6 +21,7 @@ public class PlanetHP : MonoBehaviour
     private Vector3 healRate;
 
     AudioManager audioManager;
+    PlanetAnimationController animationController;
 
     private void Awake()
     {
@@ -106,11 +107,14 @@ public class PlanetHP : MonoBehaviour
             {
                 print("Player1 died");
                 gameManager.PlayerDied(1);
+                animationController.TriggerExplosion();
             }
             else if (gameObject.name == "Planet2")
             {
                 print("Player2 died");
                 gameManager.PlayerDied(2);
+                animationController.TriggerExplosion();
+
             }
             return;
         }
@@ -126,6 +130,9 @@ public class PlanetHP : MonoBehaviour
         // Adjust the planet's size based on health.
         float healthRatio = currentHealth / startingHealth;
         transform.localScale = originalScale * healthRatio;
+        audioManager.GameSFX(audioManager.astreoid);
+
+
 
         if (transform.localScale.x < 0.1)
         {

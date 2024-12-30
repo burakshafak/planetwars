@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
             isGameOver = true;
             Debug.Log("Player 1 Wins the Game!");
             player1WonText.SetActive(true);
-            gameWorld.SetActive(false);
+            
             ResetGame();
         }
         else if (player2Wins == roundsToWin)
@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
             player2WonText.SetActive(true);
             isGameOver = true;
             Debug.Log("Player 2 Wins the Game!");
-            gameWorld.SetActive(false) ;
+            
             ResetGame();
         }
         
@@ -128,6 +128,8 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDied(int loser)
     {
+
+        gameWorld.SetActive(false);
 
         if (isGameOver) return;
 

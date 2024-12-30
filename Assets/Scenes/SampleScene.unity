@@ -1726,7 +1726,7 @@ MonoBehaviour:
   y1: -50
   y2: 50
   sceneLoadDelay: 3
-  gameWorld: {fileID: 0}
+  gameWorld: {fileID: 1162964188}
 --- !u!4 &632474650
 Transform:
   m_ObjectHideFlags: 0

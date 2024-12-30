@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public GameObject player1DiedText;
     public GameObject player2DiedText;
+    public GameObject player1WonText;
+    public GameObject player2WonText;
 
     public static bool isGameOver = false;
 
@@ -38,6 +40,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] int y2 = 70;
 
     [SerializeField] float sceneLoadDelay = 1f;
+
+    public GameObject gameWorld;
 
     public int printPlayer1Score()
     {
@@ -107,12 +111,16 @@ public class GameManager : MonoBehaviour
         {
             isGameOver = true;
             Debug.Log("Player 1 Wins the Game!");
+            player1WonText.SetActive(true);
+            gameWorld.SetActive(false);
             ResetGame();
         }
         else if (player2Wins == roundsToWin)
         {
+            player2WonText.SetActive(true);
             isGameOver = true;
             Debug.Log("Player 2 Wins the Game!");
+            gameWorld.SetActive(false) ;
             ResetGame();
         }
         

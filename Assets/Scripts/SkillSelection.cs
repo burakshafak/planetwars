@@ -36,11 +36,13 @@ public class SkillSelection : MonoBehaviour
     private bool player2Selected = false;
     private bool skillChosen = false;
 
+    
+
     private List<string> allSkills = new List<string>
     {
-        "Fireball", "Shield", "Teleport", "Dash",
-        "Freeze", "Leap", "Punch", "Flame",
-        "IceBlast", "SuperKick"
+        "Fireball", "Shield",
+        "Freeze",  "Flame",
+        "IceBlast", "Example"
     };
 
     private List<string> currentSkills = new List<string>();
@@ -153,12 +155,12 @@ public class SkillSelection : MonoBehaviour
     {
         if (player == 1 && !player1Selected)
         {
-            GameManager.player1Skills.Add(skill); // Save Player 1's skill
+            SkillManager.player1Skills.Add(skill); // Save Player 1's skill
             player1Selected = true;
         }
         else if (player == 2 && !player2Selected)
         {
-            GameManager.player2Skills.Add(skill); // Save Player 2's skill
+            SkillManager.player2Skills.Add(skill); // Save Player 2's skill
             player2Selected = true;
         }
 
@@ -173,13 +175,13 @@ public class SkillSelection : MonoBehaviour
     {
         if (player == 1 && !skillChosen)
         {
-            GameManager.player1Skills.Add(skill); // Player 1 chooses skill in subsequent rounds
+            SkillManager.player1Skills.Add(skill); // Player 1 chooses skill in subsequent rounds
             Debug.Log($"Player 1 chose: {skill}");
             skillChosen = true;
         }
         else if (player == 2 && !skillChosen)
         {
-            GameManager.player2Skills.Add(skill); // Player 2 chooses skill in subsequent rounds
+            SkillManager.player2Skills.Add(skill); // Player 2 chooses skill in subsequent rounds
             Debug.Log($"Player 2 chose: {skill}");
             skillChosen = true;
         }

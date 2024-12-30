@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public static string player2SkillsString = "";
 
     public TextMeshProUGUI scoreText;
+    public GameObject player1DiedText;
+    public GameObject player2DiedText;
 
     public static bool isGameOver = false;
 
@@ -34,6 +36,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] int x2 = 100;
     [SerializeField] int y1 = -70;
     [SerializeField] int y2 = 70;
+
+    [SerializeField] float sceneLoadDelay = 1f;
+
+    public int printPlayer1Score()
+    {
+        return player1Wins;
+    }
+
+    public int printPlayer2Score() {  
+        return player2Wins; 
+    }
  
     void Awake()
     {
@@ -112,13 +125,15 @@ public class GameManager : MonoBehaviour
 
         if (loser == 1)
         {
+            player1DiedText.SetActive(true);
             player2Wins++;
             lastRoundLoser = 1;
             round++;
-           
+
         }
         else if (loser == 2)
         {
+            player2DiedText.SetActive(true);
             player1Wins++;
             lastRoundLoser = 2;
             round++;
@@ -129,14 +144,22 @@ public class GameManager : MonoBehaviour
             isGameOver = true; // Mark the game as over
             Debug.Log("Game Over condition met!");
             ResetGame(); // Transition to Game Over scene
+            LoadGameOverScene();
         }
         else
         {
+            StartCoroutine(LoadSceneWithDelay(SceneManager.GetActiveScene().name, sceneLoadDelay));
             // Reload the current scene for the next round
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
 
         }
 
+    }
+
+    private IEnumerator LoadSceneWithDelay(string sceneName, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(sceneName);
     }
 
     private void RandomizePlanetPositions()
@@ -168,40 +191,15 @@ public class GameManager : MonoBehaviour
         lastRoundLoser = 0;
 
         // Load Title Screen or End Game Scene
-        SceneManager.LoadScene("GameOverScene");
-        //player1Skills.Clear();
-        //player2Skills.Clear();
         //round = 1;
     }
 
-    public string printPlayer1Skills() { 
-        int player1SkillNumber = player1Skills.Count;
-        
-
-        
-        for(int i = 0; i < player1SkillNumber; i++)
-        {
-            player1SkillsString = player1SkillsString + "\n" + player1Skills[i];
-        }
-        print("Player 1 skills are:" + player1SkillsString);
-        return player1SkillsString;
-        
-        
-    }
-
-    public string printPlayer2Sills()
+    public void LoadGameOverScene()
     {
-        int player2SkillNumber = player2Skills.Count;
-
-        
-        for (int i = 0; i < player2SkillNumber; i++)
-        {
-            player2SkillsString = player2SkillsString + "\n" + player2Skills[i];
-        }
-        print("Player 2 skills are:" + player2SkillsString);
-        return player2SkillsString;
+        StartCoroutine(LoadSceneWithDelay("GameOverScene", sceneLoadDelay));
     }
 
+    
 
 
 }

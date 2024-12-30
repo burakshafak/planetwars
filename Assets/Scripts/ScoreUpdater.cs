@@ -19,9 +19,15 @@ public class ScoreUpdater : MonoBehaviour
         {
             print("Game manager is null");
         }
+        int player1ScoreInt = gameManager.printPlayer1Score();
+        int player2ScoreInt = gameManager.printPlayer2Score();
 
-        player1Text.text = gameManager.printPlayer1Skills();
-        player2Text.text = gameManager.printPlayer2Sills();
+        string player1Score = player1ScoreInt.ToString();
+        string player2Score = player2ScoreInt.ToString();
+
+        player1Text.text = player1Score;
+        player2Text.text = player2Score;
+        
     }
 
 

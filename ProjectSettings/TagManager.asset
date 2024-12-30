@@ -12,6 +12,14 @@ TagManager:
   - Explosion
   - Player1
   - Player2
+  - FireBallSkill
+  - IceBallSkill
+  - FireBall
+  - IceBall
+  - FireBall1
+  - FireBall2
+  - IceBall1
+  - IceBall2
   layers:
   - Default
   - TransparentFX

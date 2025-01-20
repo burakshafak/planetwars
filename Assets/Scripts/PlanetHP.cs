@@ -25,8 +25,6 @@ public class PlanetHP : MonoBehaviour
     AudioManager audioManager;
 
     
-   
-
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -72,10 +70,13 @@ public class PlanetHP : MonoBehaviour
         {
             if (other.CompareTag("Fire1"))
             {
+                print("The health before getting fire damage:" + gameObject.transform.localScale.x);
                 
                 Destroy(other.gameObject); // Destroy the asteroid.
                 TakeFireDamage(); // Example damage value.
                 audioManager.GameSFX(audioManager.damage);
+
+                print("The health after getting fire damage:" + gameObject.transform.localScale.x);
 
             }
             if (other.CompareTag("FireBall1"))
@@ -95,27 +96,21 @@ public class PlanetHP : MonoBehaviour
         }
 
         if (other.CompareTag("Star"))
-        {
-            
-
+        {           
             healRate = other.transform.localScale;
             print("Collected a star.");
             heal(healRate);
             audioManager.GameSFX(audioManager.star);
-
             Destroy(other.gameObject);
         }
 
         if (other.CompareTag("Astreoid"))
         {
-
             damageRate = other.transform.localScale;
             print("Collided with an astreoid.");
             TakeAstreoidDamage(damageRate);
             audioManager.GameSFX(audioManager.astreoid);
-
             Destroy(other.gameObject);  
-
         }
 
         if (other.CompareTag("Player1"))
@@ -195,7 +190,7 @@ public class PlanetHP : MonoBehaviour
         float healthRatio = currentHealth / startingHealth;
         transform.localScale = originalScale * healthRatio;
 
-        if (transform.localScale.x < 0.1)
+        if (transform.localScale.x < 0.05)
         {
             // Handle planet destruction.
 

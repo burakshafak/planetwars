@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     public static int player1Wins = 0;
     public static int player2Wins = 0;
     public static int roundsToWin = 2;
@@ -43,12 +45,13 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameWorld;
 
-    public int printPlayer1Score()
+
+    public static int printPlayer1Score()
     {
         return player1Wins;
     }
 
-    public int printPlayer2Score() {  
+    public static int printPlayer2Score() {  
         return player2Wins; 
     }
  
@@ -195,8 +198,8 @@ public class GameManager : MonoBehaviour
     {
 
         // Reset everything for a new game
-        player1Wins = 0;
-        player2Wins = 0;
+        //player1Wins = 0;
+        //player2Wins = 0;
         
         lastRoundLoser = 0;
 

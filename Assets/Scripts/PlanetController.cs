@@ -80,13 +80,7 @@ public class PlanetController : MonoBehaviour
 
     }
 
-    IEnumerator Firee()
-    {
-        var bullet = Instantiate(bulletPrefab, shootingPoint.transform.position, shootingPoint.transform.rotation);
-        bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.transform.up * bulletSpeed;
-        yield return null;
-    }
-
+    
     void Fire()
     {
         audioManager.GameSFX(audioManager.fire);

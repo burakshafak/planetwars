@@ -30,7 +30,7 @@ public class HP : MonoBehaviour
     {
         if (other.CompareTag("Fire1") || other.CompareTag("Fire2"))
         {
-            print(gameObject.name + " is hit by a bullet.");
+            
             currentHealth = currentHealth - damage;
             float healthRatio = currentHealth / startingHealth;
             transform.localScale = originalScale * healthRatio;

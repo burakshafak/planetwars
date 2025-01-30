@@ -627,7 +627,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6a846af25936dcc4d8f516d024a7e672, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3192,6 +3192,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Starry background
       objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: 041f785df9f9fb74584e8d1f1991eb87, type: 3}
+      propertyPath: m_Color.b
+      value: 0.27044016
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: 041f785df9f9fb74584e8d1f1991eb87, type: 3}
+      propertyPath: m_Color.g
+      value: 0.27044016
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: 041f785df9f9fb74584e8d1f1991eb87, type: 3}
+      propertyPath: m_Color.r
+      value: 0.27044016
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 041f785df9f9fb74584e8d1f1991eb87, type: 3}
       propertyPath: m_LocalScale.x
       value: 85
@@ -4738,7 +4750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 241187718}
   SFXSource: {fileID: 953882344}
-  background: {fileID: 8300000, guid: 24be7075e68b1814a934cd12c8e04cc9, type: 3}
+  background: {fileID: 8300000, guid: c02311b898bdb4d43a1af9059a6910fb, type: 3}
   fire: {fileID: 8300000, guid: 7c07364c897532e47bfb28a1b8f35fc2, type: 3}
   damage: {fileID: 8300000, guid: 65d61f9b9070ac34a99c2acfa192ce7f, type: 3}
   star: {fileID: 8300000, guid: 1705df466e01a9b49ac546cad6a75123, type: 3}

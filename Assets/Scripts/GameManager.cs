@@ -13,15 +13,9 @@ public class GameManager : MonoBehaviour
     public static int player2Wins = 0;
     public static int roundsToWin = 2;
 
-    public static List<string> player1Skills = new List<string>(); // Store multiple skills
-    public static List<string> player2Skills = new List<string>();
-
     public static int lastRoundLoser = 0;
 
     public static int round = 1;
-
-    public static string player1SkillsString = "";
-    public static string player2SkillsString = "";
 
     public TextMeshProUGUI scoreText;
     public GameObject player1DiedText;

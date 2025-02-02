@@ -36,6 +36,7 @@ public class BulletDestroyed : MonoBehaviour
             if (collision.CompareTag("Astreoid") || collision.CompareTag("Star"))
             {
                 print("Bullet hit:" + collision.gameObject);
+                Destroy(gameObject);
                 
             }
 

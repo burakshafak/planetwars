@@ -46,15 +46,4 @@ public class Skill : MonoBehaviour
         skillObject.GetComponent<Rigidbody2D>().velocity = shootingPoint.transform.up * fireBallSpeed;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

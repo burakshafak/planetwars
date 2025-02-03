@@ -8,7 +8,7 @@ public class SceneManagement : MonoBehaviour
     void Update()
     {
         // Check if the Space key is pressed
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.anyKey)
         {
             // Load the SampleScene
             SceneManager.LoadScene("SampleScene");

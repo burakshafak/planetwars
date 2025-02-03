@@ -13,15 +13,9 @@ public class GameManager : MonoBehaviour
     public static int player2Wins = 0;
     public static int roundsToWin = 2;
 
-    public static List<string> player1Skills = new List<string>(); // Store multiple skills
-    public static List<string> player2Skills = new List<string>();
-
     public static int lastRoundLoser = 0;
 
     public static int round = 1;
-
-    public static string player1SkillsString = "";
-    public static string player2SkillsString = "";
 
     public TextMeshProUGUI scoreText;
     public GameObject player1DiedText;
@@ -106,26 +100,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //Transform transform1 = planet1.GetComponent<Transform>();
-        //Transform transform2 = planet2.GetComponent<Transform>();
 
         // Check if a player has won the game
-        if (player1Wins == roundsToWin)
-        {
-            isGameOver = true;
-            Debug.Log("Player 1 Wins the Game!");
-            player1WonText.SetActive(true);
-            
-            ResetGame();
-        }
-        else if (player2Wins == roundsToWin)
-        {
-            player2WonText.SetActive(true);
-            isGameOver = true;
-            Debug.Log("Player 2 Wins the Game!");
-            
-            ResetGame();
-        }
+        
         
     }
 
@@ -143,6 +120,18 @@ public class GameManager : MonoBehaviour
             lastRoundLoser = 1;
             round++;
 
+
+            if (player2Wins == roundsToWin)
+            {
+                player2WonText.SetActive(true);
+                isGameOver = true;
+                Debug.Log("Player 2 Wins the Game!");
+
+                ResetGame();
+
+                LoadGameOverScene();
+            }
+
         }
         else if (loser == 2)
         {
@@ -150,21 +139,24 @@ public class GameManager : MonoBehaviour
             player1Wins++;
             lastRoundLoser = 2;
             round++;
-          
+
+            if (player1Wins == roundsToWin)
+            {
+                isGameOver = true;
+                Debug.Log("Player 1 Wins the Game!");
+                player1WonText.SetActive(true);
+
+                ResetGame();
+
+                LoadGameOverScene();
+            }
+
         }
-        if (player1Wins == roundsToWin || player2Wins == roundsToWin)
-        {
-            isGameOver = true; // Mark the game as over
-            Debug.Log("Game Over condition met!");
-            ResetGame(); // Transition to Game Over scene
-            LoadGameOverScene();
-        }
-        else
+        if(!isGameOver)
         {
             StartCoroutine(LoadSceneWithDelay(SceneManager.GetActiveScene().name, sceneLoadDelay));
             // Reload the current scene for the next round
             
-
         }
 
     }
@@ -183,37 +175,21 @@ public class GameManager : MonoBehaviour
         int y22 = Random.Range(y1, y2);
         UnityEngine.Vector3 planet1randomPosition = new UnityEngine.Vector3(x11, y11, 0);
         transform1.position = planet1randomPosition;
-        
-
 
         UnityEngine.Vector3 planet2randomPosition = new UnityEngine.Vector3(x22, y22, 0);
         transform2.position = planet2randomPosition;
-
-
     }
-
 
 
     public void ResetGame()
     {
-
-        // Reset everything for a new game
-        //player1Wins = 0;
-        //player2Wins = 0;
-        
         lastRoundLoser = 0;
-
-        // Load Title Screen or End Game Scene
-        //round = 1;
     }
 
     public void LoadGameOverScene()
     {
         StartCoroutine(LoadSceneWithDelay("GameOverScene", sceneLoadDelay));
     }
-
-    
-
 
 }
 

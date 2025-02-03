@@ -47,7 +47,6 @@ public class PlanetHP : MonoBehaviour
                 Destroy(other.gameObject); // Destroy the asteroid.
                 TakeFireDamage(); // Example damage value.
                 audioManager.GameSFX(audioManager.damage);
-
             }
 
             if (other.CompareTag("FireBall2"))
@@ -62,7 +61,6 @@ public class PlanetHP : MonoBehaviour
                 damageRate = other.transform.localScale / 10;
                 TakeAstreoidDamage(damageRate);
                 Destroy(other.gameObject);
-
             }
         }
 

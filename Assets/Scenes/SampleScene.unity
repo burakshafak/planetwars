@@ -449,7 +449,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6a846af25936dcc4d8f516d024a7e672, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.256
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1602,13 +1602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c11994f5ebb55f4c9422ac03893b993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 632474649}
-  fireBallPrefab: {fileID: 1576049484368065757, guid: 7303d30649294d8489055582c25a7ced, type: 3}
-  player1: {fileID: 666094920}
-  player2: {fileID: 917732161}
-  shootingPoint1: {fileID: 252828932}
-  shootingPoint2: {fileID: 592994768}
-  fireBallSpeed: 50
 --- !u!4 &912222360
 Transform:
   m_ObjectHideFlags: 0
@@ -2558,18 +2551,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb254906954e45048bfeea3047c78c19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillPanel: {fileID: 0}
-  firstRoundSkillPanel: {fileID: 0}
-  gameWorld: {fileID: 1162964188}
-  skill1FirstRoundButtonPlayer1: {fileID: 0}
-  skill2FirstRoundButtonPlayer1: {fileID: 0}
-  skill3FirstRoundButtonPlayer1: {fileID: 0}
-  skill1FirstRoundButtonPlayer2: {fileID: 0}
-  skill2FirstRoundButtonPlayer2: {fileID: 0}
-  skill3FirstRoundButtonPlayer2: {fileID: 0}
-  skill1Button: {fileID: 0}
-  skill2Button: {fileID: 0}
-  skill3Button: {fileID: 0}
 --- !u!4 &1296092101
 Transform:
   m_ObjectHideFlags: 0

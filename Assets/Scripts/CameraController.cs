@@ -22,12 +22,10 @@ public class CameraController : MonoBehaviour
 
         Vector3 middlePoint = (position1 + position2)/2;
 
-        print("the middle point of planets is: " +  middlePoint);
-
         Vector3 movePoint = new(middlePoint.x, middlePoint.y, transform.position.z);
 
         float dist = Vector3.Distance(position1, position2);
-        print(dist);
+        print("The distance between the planets: " + dist);
         if(dist > 200f)
         {
             transform.position = Vector3.MoveTowards(transform.position, movePoint, cameraSpeed * Time.deltaTime);

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ScrollingBackground : MonoBehaviour
 {
+    public static ScrollingBackground instance;
     public GameObject tilePrefab;
-    public int tileSize = 16;
-    public int poolSize = 32;
+    public int tileSize = 64;
+    public int poolSize = 8;
 
     public Sprite[] tileVariations;
 
@@ -16,6 +17,16 @@ public class ScrollingBackground : MonoBehaviour
     private Dictionary<Vector2,GameObject> activeTiles = new Dictionary<Vector2,GameObject>();
 
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         cam = Camera.main.transform;
@@ -43,7 +54,9 @@ public class ScrollingBackground : MonoBehaviour
 
     void GenerateTiles()
     {
-        int viewRange = 2;
+        int viewRangeX = Mathf.CeilToInt(Camera.main.orthographicSize * Screen.width / Screen.height / tileSize) + 1;
+        int viewRangeY = Mathf.CeilToInt(Camera.main.orthographicSize / tileSize) + 1;
+        int viewRange = Mathf.Max(viewRangeX, viewRangeY); // Take the larger value
         HashSet<Vector2> neededTiles = new HashSet<Vector2>();
 
         for (int x = -viewRange; x <= viewRange; x++)
@@ -61,6 +74,7 @@ public class ScrollingBackground : MonoBehaviour
                 {
                     GameObject tile = GetTileFromPool();
                     tile.transform.position = new Vector3(tilePos.x * tileSize, tilePos.y * tileSize, 0);
+                    AssignRandomSprite(tile);
                     tile.SetActive(true);
                     activeTiles[tilePos] = tile;
                 }
@@ -101,12 +115,15 @@ public class ScrollingBackground : MonoBehaviour
 
     void AssignRandomSprite(GameObject tile)
     {
-        if (tileVariations.Length > 0)
+        if (instance.tileVariations.Length > 0)
         {
             SpriteRenderer renderer = tile.GetComponent<SpriteRenderer>();
-            if (renderer != null)
+
+            
+
+            if (renderer != null && instance.tileVariations.Length > 0)
             {
-                renderer.sprite = tileVariations[Random.Range(0, tileVariations.Length)];
+                renderer.sprite = instance.tileVariations[Random.Range(0, instance.tileVariations.Length)];
             }
         }
     }

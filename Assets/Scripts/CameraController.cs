@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] GameObject planet1;
     [SerializeField] GameObject planet2;
 
-    private float cameraSpeed = 100.0f;
+    private float cameraSpeed = 170.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,13 +24,10 @@ public class CameraController : MonoBehaviour
 
         Vector3 movePoint = new(middlePoint.x, middlePoint.y, transform.position.z);
 
-        float dist = Vector3.Distance(position1, position2);
-        print("The distance between the planets: " + dist);
-        if(dist > 200f)
-        {
+        
             transform.position = Vector3.MoveTowards(transform.position, movePoint, cameraSpeed * Time.deltaTime);
 
-        }
+        
 
     }
 }

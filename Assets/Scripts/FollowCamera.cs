@@ -7,7 +7,7 @@ public class FollowCamera : MonoBehaviour
 {
 
     [SerializeField] GameObject MainCam;
-    private float speed = 100f;
+    private float speed = 160f;
     // Start is called before the first frame update
     void Start()
     {

@@ -32,7 +32,23 @@ public class RandomSpawner : MonoBehaviour
         GameObject randomPrefab = prefabs[Random.Range(0, prefabs.Length)];
 
         // Instantiate the prefab at the respawn point
-        Instantiate(randomPrefab, randomRespawn.position, randomRespawn.rotation);
+        GameObject spawnedObject = Instantiate(randomPrefab, randomRespawn.position, randomRespawn.rotation);
+        Vector3 fixedPosition = spawnedObject.transform.position;
+        fixedPosition.z = 0f;
+        spawnedObject.transform.position = fixedPosition;
+        //GameWorld layer
+        SetLayerRecursively(randomPrefab, 3);
+    }
+
+    void SetLayerRecursively(GameObject obj, int layer)
+    {
+        obj.layer = layer; // Set the object's layer
+
+        // Apply the layer to all child objects as well
+        foreach (Transform child in obj.transform)
+        {
+            SetLayerRecursively(child.gameObject, layer);
+        }
     }
 }
 

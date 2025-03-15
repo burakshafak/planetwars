@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3118164836849937744}
   - component: {fileID: 5295168510327801367}
   - component: {fileID: 557983277194792991}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Astreoid 1
   m_TagString: Astreoid
   m_Icon: {fileID: 0}

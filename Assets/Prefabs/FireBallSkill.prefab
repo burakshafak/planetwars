@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9182682357735601462}
   - component: {fileID: -1154806440769385411}
   - component: {fileID: 605504754015388417}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FireBallSkill
   m_TagString: FireBallSkill
   m_Icon: {fileID: 0}

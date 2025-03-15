@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] GameObject planet1;
     [SerializeField] GameObject planet2;
 
-    private float cameraSpeed = 170.0f;
+    private float cameraSpeed = 160.0f;
     // Start is called before the first frame update
     void Start()
     {
